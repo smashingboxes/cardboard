@@ -1,0 +1,35 @@
+app_name: cardboard
+
+letsencrypt:
+  enabled: false
+  hostname:          # REQUIRED should be example.com or subdomain.example.com (do not include the www)
+  email:             # REQUIRED
+
+# Rails App Configs
+be_app_repo:
+
+# HTML/JS App Configs
+# Uncomment if you want to deploy a JS/HTML App
+# fe_app_repo:
+# fe_app_branch: master
+# fe_build_command: npm run build
+
+slack_webhook_url:
+
+## Configure Postgresql Backups
+## Uncomment the following to enabled backups
+#
+## Store Backups on S3 or seperate server via rsync
+# S3
+# backup_dir: s3+http://[aws_access_key:aws_secret_access_key]@bucket_name[/folder]
+# Rsync
+# backup_dir: s3+http://[aws_access_key:aws_secret_access_key]@bucket_name[/folder]
+#
+## Which Servers are backed up
+# backup_hosts:
+#   - production
+#   - staging
+#   - qa
+#
+## Set Backup Schedule
+# backup_schedule: "* */4 * * *"

@@ -1,0 +1,46 @@
+---
+- hosts: omnibox
+  remote_user: root
+  gather_facts: no
+  pre_tasks:
+    - name: 'install python2'
+      raw: sudo apt-get -y install python-simplejson
+
+    - name: install apt requirements
+      become: yes
+      apt: pkg=aptitude
+
+    - name: update pre-installed packages
+      become: yes
+      apt: upgrade=full update_cache=yes
+
+- hosts: omnibox
+  user: root
+
+  vars_files:
+    - "{{tape_dir}}/vars/defaults.yml"
+    - tape_vars.yml
+
+  roles:
+    - general
+    - ufw
+    - deployer_user
+    - dev_keys
+    - monit_install
+    - postgres
+    - letsencrypt
+    - nginx
+    - backend_install_essentials
+    - frontend_install_essentials
+    - backend_checkout
+    - puma_install
+    - backend_config
+    - database_load
+    - puma_activate
+    - frontend_deploy
+    # - delayed_job
+    # - whenever
+    # - sidekiq
+    # - redis
+    # - imagemagick
+    - monit_activate # Run Last

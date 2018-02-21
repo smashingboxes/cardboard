@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: cardboard_development
+
+test:
+  <<: *default
+  database: cardboard_test
+
+production:
+  <<: *default
+  database: cardboard_production
+  username: cardboard
+  password: <%= ENV['CARDBOARD_DATABASE_PASSWORD'] %>
