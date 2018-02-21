@@ -1,0 +1,5 @@
+--require app/javascript/support/addons.js
+--require app/javascript/support/loaders.js
+--require app/javascript/support/globals.js
+
+app/javascript/**/*.spec.*

@@ -1,14 +1,57 @@
 {
   "name": "cardboard",
   "private": true,
+  "scripts": {
+    "lint": "npm run lint:css && npm run lint:js",
+    "lint:css": "stylelint 'src/css/**/*.css' || true",
+    "lint:js": "eslint --format 'node_modules/eslint-friendly-formatter' --ext .js,.jsx ./src ./modules",
+    "lint:dev": "npm run lint -- -w",
+    "pretest": "npm run lint:css && npm run lint:js",
+    "test": "NODE_ENV=test mocha --compilers jsx:babel-register --opts 'app/javascript/support/mocha.opts'",
+    "test:dev": "npm test -- -w"
+  },
   "dependencies": {
     "@rails/webpacker": "^3.2.2",
+    "axios": "^0.17.0",
     "babel-preset-react": "^6.24.1",
+    "change-object-case": "^0.1.1",
+    "immutable": "^3.8.2",
+    "keymirror": "^0.1.1",
+    "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-immutable-proptypes": "^2.1.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-trello": "^1.24.1",
+    "redux": "^3.7.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-enzyme": "^1.0.0-beta.0",
+    "chai-immutable": "^1.6.0",
+    "cheerio": "^1.0.0-rc.2",
+    "enzyme": "^3.1.0",
+    "es6-promise": "^4.1.1",
+    "eslint": "^4.10.0",
+    "eslint-config-smashing-boxes": "^1.1.1",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-plugin-react": "^7.4.0",
+    "faker": "^4.1.0",
+    "fixture-factory": "https://github.com/peterKaleta/fixture-factory.git#release/1.5.2",
+    "mocha": "^4.0.1",
+    "sinon": "^4.1.1",
+    "sinon-chai": "^2.14.0",
+    "stylelint": "^8.2.0",
     "webpack-dev-server": "^2.11.1"
   }
 }
