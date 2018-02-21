@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Board from 'react-trello';
 
+import Card from './Card';
+
 const propTypes = {
   project: ImmutablePropTypes.contains({
     name: PropTypes.string.isRequired,
@@ -30,10 +32,13 @@ function ProjectShow({ project }) {
       .filter((story) => column.get('statuses').includes(story.get('status')))
       .map((story) => {
         return {
-          id: story.get('id').toString(),
+          id: story.get('id'),
           title: story.get('name'),
           description: story.get('description'),
-          label: '30 mins'
+          estimate: {
+            type: 'points',
+            value: 3
+          }
         };
       })
       .toJS();
@@ -50,7 +55,13 @@ function ProjectShow({ project }) {
   return (
     <div>
       <h1>{project.get('name')}</h1>
-      <Board draggable data={boardData} />;
+      <Board
+        customCardLayout
+        data={boardData}
+        draggable
+      >
+        <Card />
+      </Board>;
     </div>
   );
 }
