@@ -11,6 +11,7 @@ gem "rails", "~> 5.1.5"
 
 gem "coffee-rails", "~> 4.2"
 
+gem "active_model_serializers"
 gem "sass-rails", "~> 5.0"
 gem "pg", "~> 1.0.0"
 gem "puma", "~> 3.7"
