@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.12.3)
+      concurrent-ruby (~> 1.0)
     actioncable (5.1.5)
       actionpack (= 5.1.5)
       nio4r (~> 2.0)
@@ -234,6 +236,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   active_model_serializers
   annotate
   awesome_print
