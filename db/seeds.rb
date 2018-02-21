@@ -11,5 +11,7 @@
 # epics = FactoryBot.create_list(:epic, 3)
 
 FactoryBot.create_list(:project, 20).each do |project|
-  FactoryBot.create_list(:story, 3, project: project)
+  Story.aasm.states.map(&:name).each do |status|
+    FactoryBot.create_list(:story, rand(1..3), project: project, status: status)
+  end
 end
