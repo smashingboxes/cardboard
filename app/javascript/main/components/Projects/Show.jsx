@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -15,55 +16,36 @@ const propTypes = {
   })
 };
 
+const COLUMNS = Immutable.fromJS([
+  { label: 'To Do', statuses: ['todo'] },
+  { label: 'In Progress', statuses: ['in_progress', 'qa_rejected'] },
+  { label: 'Code Review', statuses: ['code_review', 'merged'] },
+  { label: 'QA', statuses: ['qa'] },
+  { label: 'Done', statuses: ['done'] }
+]);
+
 function ProjectShow({ project }) {
-  const todo = project.get('stories').map((story) => {
+  const lanes = COLUMNS.map((column) => {
+    const cards = project.get('stories')
+      .filter((story) => column.get('statuses').includes(story.get('status')))
+      .map((story) => {
+        return {
+          id: story.get('id').toString(),
+          title: story.get('name'),
+          description: story.get('description'),
+          label: '30 mins'
+        };
+      })
+      .toJS();
     return {
-      id: story.get('id'),
-      title: story.get('name'),
-      description: story.get('description'),
-      label: '30 mins'
+      id: column.get('label'),
+      title: column.get('label'),
+      label: cards.length.toString(),
+      cards
     };
   }).toJS();
-  const inProgress = [];
-  const codeReview = [];
-  const qa = [];
-  const done = [];
 
-  const boardData = {
-    lanes: [
-      {
-        id: 'lane1',
-        title: 'To Do',
-        label: todo.length,
-        cards: todo
-      },
-      {
-        id: 'lane2',
-        title: 'In Progress',
-        label: inProgress.length,
-        cards: inProgress
-      },
-      {
-        id: 'lane3',
-        title: 'Code Review',
-        label: codeReview.length,
-        cards: codeReview
-      },
-      {
-        id: 'lane4',
-        title: 'QA',
-        label: qa.length,
-        cards: qa
-      },
-      {
-        id: 'lane5',
-        title: 'Completed',
-        label: done.length,
-        cards: done
-      }
-    ]
-  };
-
+  const boardData = { lanes };
 
   return (
     <div>
