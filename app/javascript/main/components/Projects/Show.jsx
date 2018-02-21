@@ -16,35 +16,14 @@ const propTypes = {
 };
 
 function ProjectShow({ project }) {
-  // const cards = project.get('stories').map((story) => {
-  //   return {
-  //     id: story.getIn(['id', 'oid']),
-  //     title: `${project.get('name')}-${story.get('idWithinProject')}`,
-  //     description: story.get('description'),
-  //     label: '30 mins'
-  //   };
-  // }).toJS();
-
-  const cards = [
-    {
-      id: 1,
-      title: 'Meh',
-      description: 'Lorem ipsum',
+  const cards = project.get('stories').map((story) => {
+    return {
+      id: story.get('id'),
+      title: story.get('name'),
+      description: story.get('description'),
       label: '30 mins'
-    },
-    {
-      id: 2,
-      title: 'Meh',
-      description: 'Lorem ipsum',
-      label: '30 mins'
-    },
-    {
-      id: 3,
-      title: 'Meh',
-      description: 'Lorem ipsum',
-      label: '30 mins'
-    }
-  ];
+    };
+  }).toJS();
 
   const boardData = {
     lanes: [
