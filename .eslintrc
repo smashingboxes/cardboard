@@ -1,0 +1,9 @@
+{
+  "extends": "smashing-boxes/react",
+  "rules": {
+    "no-undefined": "off"
+  },
+  "globals": {
+    "fixture": true
+  },
+}
