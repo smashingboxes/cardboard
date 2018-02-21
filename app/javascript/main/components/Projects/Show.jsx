@@ -32,7 +32,7 @@ function ProjectShow({ project }) {
       .filter((story) => column.get('statuses').includes(story.get('status')))
       .map((story) => {
         return {
-          id: story.get('id'),
+          id: story.get('id').toString(),
           title: story.get('name'),
           description: story.get('description'),
           estimate: {

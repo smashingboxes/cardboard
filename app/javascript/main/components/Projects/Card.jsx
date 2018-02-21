@@ -2,18 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
   estimate: PropTypes.shape({
-    type: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired
-  }).isRequired
+    type: PropTypes.string,
+    value: PropTypes.number
+  })
 };
 
 function Card(props) {
   return (
-    <div>
+    <div className="c-card">
       <p>ID: {props.id}</p>
       <p>Title: {props.title}</p>
       <p>Description: {props.description}</p>

@@ -5,7 +5,7 @@ import {
   Provider
 } from 'react-redux';
 import storeService from './services/store';
-// import './assets/css/styles.css';
+import './assets/css';
 
 const rootEl = document.getElementById('root');
 
