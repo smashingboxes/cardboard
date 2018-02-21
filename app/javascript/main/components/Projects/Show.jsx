@@ -16,7 +16,7 @@ const propTypes = {
 };
 
 function ProjectShow({ project }) {
-  const cards = project.get('stories').map((story) => {
+  const todo = project.get('stories').map((story) => {
     return {
       id: story.get('id'),
       title: story.get('name'),
@@ -24,20 +24,42 @@ function ProjectShow({ project }) {
       label: '30 mins'
     };
   }).toJS();
+  const inProgress = [];
+  const codeReview = [];
+  const qa = [];
+  const done = [];
 
   const boardData = {
     lanes: [
       {
         id: 'lane1',
-        title: 'Planned Tasks',
-        label: '2/2',
-        cards
+        title: 'To Do',
+        label: todo.length,
+        cards: todo
       },
       {
         id: 'lane2',
+        title: 'In Progress',
+        label: inProgress.length,
+        cards: inProgress
+      },
+      {
+        id: 'lane3',
+        title: 'Code Review',
+        label: codeReview.length,
+        cards: codeReview
+      },
+      {
+        id: 'lane4',
+        title: 'QA',
+        label: qa.length,
+        cards: qa
+      },
+      {
+        id: 'lane5',
         title: 'Completed',
-        label: '0/0',
-        cards: []
+        label: done.length,
+        cards: done
       }
     ]
   };
