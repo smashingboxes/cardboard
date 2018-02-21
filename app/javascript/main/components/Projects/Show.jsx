@@ -16,14 +16,35 @@ const propTypes = {
 };
 
 function ProjectShow({ project }) {
-  const cards = project.get('stories').map((story) => {
-    return {
-      id: story.getIn(['id', 'oid']),
-      title: `${project.get('slug')}-${story.get('idWithinProject')}`,
-      description: story.get('description'),
+  // const cards = project.get('stories').map((story) => {
+  //   return {
+  //     id: story.getIn(['id', 'oid']),
+  //     title: `${project.get('name')}-${story.get('idWithinProject')}`,
+  //     description: story.get('description'),
+  //     label: '30 mins'
+  //   };
+  // }).toJS();
+
+  const cards = [
+    {
+      id: 1,
+      title: 'Meh',
+      description: 'Lorem ipsum',
       label: '30 mins'
-    };
-  }).toJS();
+    },
+    {
+      id: 2,
+      title: 'Meh',
+      description: 'Lorem ipsum',
+      label: '30 mins'
+    },
+    {
+      id: 3,
+      title: 'Meh',
+      description: 'Lorem ipsum',
+      label: '30 mins'
+    }
+  ];
 
   const boardData = {
     lanes: [
@@ -45,7 +66,7 @@ function ProjectShow({ project }) {
 
   return (
     <div>
-      <h1>{project.get('name')} - {project.get('slug')}</h1>
+      <h1>{project.get('name')}</h1>
       <Board draggable data={boardData} />;
     </div>
   );

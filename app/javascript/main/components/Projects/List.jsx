@@ -20,10 +20,10 @@ function ProjectList({ projects }) {
   return (
     <ul>
       {projects.map((project) => {
-        const oid = project.getIn(['id', 'oid']);
+        const id = project.get('id');
         return (
-          <li key={oid}>
-            <Link to={`/projects/${oid}`}>{project.get('name')}</Link>
+          <li key={id}>
+            <Link to={`/projects/${id}`}>{project.get('name')}</Link>
           </li>
         );
       })}
