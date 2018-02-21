@@ -37,7 +37,7 @@ bundle exec rails db:setup
 To run the app locally:
 
 ```sh
-bundle exec rails s
+foreman start
 ```
 Then navigate to http://localhost:3000
 
