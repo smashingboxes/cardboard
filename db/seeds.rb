@@ -10,7 +10,6 @@
 
 # epics = FactoryBot.create_list(:epic, 3)
 
-FactoryBot.create_list(:project, 20)
-# .each do |project|
-#   FactoryBot.create_list(:story, 3, project: project, epic: epics.sample)
-# end
+FactoryBot.create_list(:project, 20).each do |project|
+  FactoryBot.create_list(:story, 3, project: project)
+end
