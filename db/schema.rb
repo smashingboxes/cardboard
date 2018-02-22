@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221031012) do
+ActiveRecord::Schema.define(version: 20180222013029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20180221031012) do
 
   create_table "stories", force: :cascade do |t|
     t.bigint "project_id"
-    t.string "name"
-    t.text "description"
+    t.string "slug"
+    t.text "summary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
