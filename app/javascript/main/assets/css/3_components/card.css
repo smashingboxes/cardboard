@@ -1,3 +1,57 @@
 .c-card {
-  background-color: red;
+  padding: var(--spacing-xs);
+}
+
+.c-card__titlebar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm)
+}
+
+.c-card__slug {
+  font-weight: var(--font-weight-bold);
+}
+
+.c-card__status {
+  padding: var(--spacing-xs);
+  color: white;
+  border-radius: 5px;
+}
+.c-card--todo .c-card__status {
+  background-color: var(--color-med-grey);
+}
+.c-card--in_progress .c-card__status {
+  background-color: var(--color-yellow);
+}
+.c-card--qa_rejected .c-card__status {
+  background-color: var(--color-red);
+}
+.c-card--code_review .c-card__status {
+  background-color: var(--color-yellow);
+}
+.c-card--merged .c-card__status {
+  background-color: var(--color-blue);
+}
+.c-card--qa .c-card__status {
+  background-color: var(--color-blue);
+}
+.c-card--done .c-card__status {
+  background-color: var(--color-green);
+}
+
+.c-card__estimate {
+  text-align: center;
+  vertical-align: middle;
+  min-width: 2em;
+  min-height: 2em;
+  line-height: 2em;
+}
+
+.c-card__estimate--timebox {
+  border: 1px solid var(--color-dark-grey);
+}
+
+.c-card__estimate--points {
+  background-color: var(--color-light-grey);
+  border-radius: 50%;
 }
