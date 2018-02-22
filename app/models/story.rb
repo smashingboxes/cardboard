@@ -25,4 +25,14 @@ class Story < ApplicationRecord
     state :qa
     state :done
   end
+
+  # TODO: Make this actually work
+  def estimate
+    type = %i(points timebox).sample
+    possible_values = type == :points ? [1, 2, 3, 5, 8, 13] : [1, 2, 3, 4, 5]
+    {
+      type: type,
+      value: possible_values.sample
+    }
+  end
 end
