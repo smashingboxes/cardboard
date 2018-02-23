@@ -27,8 +27,8 @@ set up this app:
 git clone <REPO_URL>
 cd <APP_DIR>
 bundle install
+yarn install
 cp config/secrets.example.yml config/secrets.yml
-cp config/database.example.yml config/database.yml
 bundle exec rails db:setup
 ```
 
