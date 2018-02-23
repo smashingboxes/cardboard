@@ -15,6 +15,11 @@ class Story < ApplicationRecord
   include AASM
 
   belongs_to :project
+  has_many :estimates,
+           class_name: "PointEstimate",
+           dependent: :destroy,
+           inverse_of: :subject,
+           as: :subject
 
   aasm column: 'status' do
     state :todo, initial: true
@@ -26,13 +31,7 @@ class Story < ApplicationRecord
     state :done
   end
 
-  # TODO: Make this actually work
   def estimate
-    type = %i(points timebox).sample
-    possible_values = type == :points ? [1, 2, 3, 5, 8, 13] : [1, 2, 3, 4, 5]
-    {
-      type: type,
-      value: possible_values.sample
-    }
+    estimates.last
   end
 end

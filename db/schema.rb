@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222013029) do
+ActiveRecord::Schema.define(version: 20180223182500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "point_estimates", force: :cascade do |t|
+    t.integer "points"
+    t.string "subject_type"
+    t.bigint "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_point_estimates_on_subject_type_and_subject_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
