@@ -1,6 +1,6 @@
 # Cardboard
 
-*TODO: Project description*
+The goal of this project is to create a project management solution that fits SB's workflow and can be customized by us. The frontend is using [react-trello](https://github.com/rcdexta/react-trello)
 
 ## Table of Contents
 
