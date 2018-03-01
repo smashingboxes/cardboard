@@ -21,7 +21,7 @@ const propTypes = {
 function ProjectShow({ project }) {
   const lanes = COLUMNS.map((column) => {
     const cards = project.get('stories')
-      .filter((story) => column.statuses.indexOf(story.get('status')) != -1)
+      .filter((story) => column.statuses.indexOf(story.get('status')) !== -1)
       .map((story) => {
         return {
           id: story.get('id').toString(),

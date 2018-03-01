@@ -3,10 +3,12 @@ import {
   Link
 } from 'react-router-dom';
 
+import routes from '../constants/routes';
+
 const propTypes = { };
 
 function Main() {
-  return <Link to="projects">Projects</Link>;
+  return <Link to={routes.PROJECTS.build()}>Projects</Link>;
 }
 
 Main.propTypes = propTypes;
