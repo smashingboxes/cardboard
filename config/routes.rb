@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :projects, only: %i(index show)
-      resources :stories, only: %i(create)
+      resources :stories, only: %i(create show)
     end
   end
 end

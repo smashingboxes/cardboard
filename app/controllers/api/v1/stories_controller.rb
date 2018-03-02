@@ -4,7 +4,15 @@ class Api::V1::StoriesController < Api::V1::ApiController
     render_save(story)
   end
 
+  def show
+    render_success_json(data: story)
+  end
+
   private
+
+  def story
+    @story ||= Story.find(params[:id])
+  end
 
   def story_params
     params.permit(
