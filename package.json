@@ -29,6 +29,7 @@
     "react-trello": "^1.24.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "redux-form": "^7.2.3",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.2.0",
     "sanitize.css": "^4.1.0"

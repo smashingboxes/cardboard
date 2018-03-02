@@ -3,8 +3,8 @@
  * ========================================================================== */
 
 /* 0_vendor - normalize, sanitize, web-fonts */
-@import "normalize.css";
-@import "sanitize.css";
+/* @import "normalize.css";
+@import "sanitize.css"; */
 
 /* 1_settings (no output) variables, mixins, @font-faces */
 @import "1_settings/variables";
