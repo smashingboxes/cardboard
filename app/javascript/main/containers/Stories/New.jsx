@@ -74,7 +74,9 @@ export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({
     form: formName,
-    onSubmit: storiesService.createStory,
+    onSubmit: (values) => {
+      return storiesService.create(values.toJS());
+    },
     enableReinitialize: true,
     keepDirtyOnReinitialize: true,
     onSubmitSuccess: handleSubmitSuccess
