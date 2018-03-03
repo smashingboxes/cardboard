@@ -16,7 +16,24 @@ function createService(resource, operation) {
         .get(`/${resource}/${id}`)
         .then(({ data }) => data);
     };
-  // TODO: Do the rest of the operations
+  case 'create':
+    return (body) => {
+      return apiService
+        .post(`/${resource}`, body)
+        .then(({ data }) => data);
+    };
+  case 'update':
+    return (id, body) => {
+      return apiService
+        .put(`/${resource}/${id}`, body)
+        .then(({ data }) => data);
+    };
+  case 'delete':
+    return (id) => {
+      return apiService
+        .delete(`/${resource}/${id}`)
+        .then(({ data }) => data);
+    };
   default:
     return null;
   }
