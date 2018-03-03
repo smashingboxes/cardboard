@@ -13,6 +13,9 @@ class Api {
   */
   constructor(config) {
     this.config = config;
+    this.services = this.buildServices();
+    this.actions = this.buildActions();
+    this.reducers = this.buildReducers();
   }
 
   /*
@@ -28,7 +31,7 @@ class Api {
       }
     }
   */
-  services() {
+  buildServices() {
     return Object.keys(this.config.resources).reduce((resourceMemo, resource) => {
       const operations = this.config.resources[resource];
       resourceMemo[resource] = operations.reduce((operationMemo, operation) => {
@@ -52,11 +55,11 @@ class Api {
       }
     }
   */
-  actions() {
+  buildActions() {
     return Object.keys(this.config.resources).reduce((resourceMemo, resource) => {
       const operations = this.config.resources[resource];
       resourceMemo[resource] = operations.reduce((operationMemo, operation) => {
-        operationMemo[operation] = createAction(resource, operation, this.services());
+        operationMemo[operation] = createAction(resource, operation, this.services);
         return operationMemo;
       }, {});
       return resourceMemo;
@@ -72,7 +75,7 @@ class Api {
       storiesItem: function
     }
   */
-  reducers() {
+  buildReducers() {
     return Object.keys(this.config.resources).reduce((memo, resource) => {
       const operations = this.config.resources[resource];
       const listIndex = operations.indexOf('list');
@@ -94,24 +97,3 @@ class Api {
 }
 
 export default Api;
-
-/*
-  const api = new Api({
-    base: '/api/v1',
-    resources: {
-      projects: ['list', 'retrieve'],
-      stories: ['retrieve', 'create']
-    }
-  })
-
-  // In actions/index.js
-  export api.actions();
-
-  // In reducers/index.js
-  export default combineReducers(
-    api.reducers()
-  );
-
-  // In services/index.js
-  export default api.services();
-*/

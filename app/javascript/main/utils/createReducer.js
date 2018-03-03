@@ -1,7 +1,9 @@
 import Immutable from 'immutable';
 
 function createItemReducer(resource, operations) {
-  return (state, action) => state;
+  return function reducer(state = {}, action) {
+    return state;
+  };
 }
 
 function createListReducer(resource) {
