@@ -1,17 +1,6 @@
-import apiService from './api';
+import api from '../utils/api';
 
-const projectsService = {
-  getProjects() {
-    return apiService
-      .get('/projects')
-      .then(({ data }) => data);
-  },
+const service = api.services.projects;
 
-  getProject(projectId) {
-    return apiService
-      .get(`/projects/${projectId}`)
-      .then(({ data }) => data);
-  }
-};
+export default service;
 
-export default projectsService;

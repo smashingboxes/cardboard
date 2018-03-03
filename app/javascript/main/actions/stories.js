@@ -1,28 +1,6 @@
-import actionTypes from '../constants/actionTypes';
-import storiesService from '../services/stories';
+import api from '../utils/api';
 
-function getStoryStart() {
-  return {
-    type: actionTypes.GET_STORY_START
-  };
-}
-
-function getStorySuccess(story) {
-  return {
-    type: actionTypes.GET_STORY_SUCCESS,
-    payload: { story }
-  };
-}
-
-function getStory(storyId) {
-  return function(dispatch) {
-    dispatch(getStoryStart());
-
-    return storiesService
-      .getStory(storyId)
-      .then((story) => dispatch(getStorySuccess(story)));
-  };
-}
+const getStory = api.actions.stories.retrieve;
 
 export {
   getStory

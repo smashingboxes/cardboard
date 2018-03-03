@@ -1,26 +1,5 @@
-import {
-  SubmissionError
-} from 'redux-form';
+import api from '../utils/api';
 
-import apiService from './api';
+const service = api.services.stories;
 
-const errorData = { _error: 'Submission error' };
-
-const storiesService = {
-  createStory(values) {
-    return apiService
-      .post('/stories', values)
-      .then(({ data }) => data)
-      .catch(() => {
-        throw new SubmissionError(errorData);
-      });
-  },
-
-  getStory(id) {
-    return apiService
-      .get(`/stories/${id}`)
-      .then(({ data }) => data);
-  }
-};
-
-export default storiesService;
+export default service;
