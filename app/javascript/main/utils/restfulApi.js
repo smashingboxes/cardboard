@@ -2,12 +2,14 @@ import createService from './createService';
 import createAction from './createAction';
 import { createListReducer, createItemReducer } from './createReducer';
 
+const OPERATIONS = ['list', 'retrieve', 'update', 'create', 'delete'];
+
 class Api {
   /*
     config = {
       resources: {
-        projects: ['list', 'retrieve'],
-        stories: ['retrieve', 'create']
+        projects: {},
+        stories: {}
       }
     }
   */
@@ -22,19 +24,21 @@ class Api {
     returns something like:
     {
       projects: {
-        list: function
-        retrieve: function
+        list: function,
+        retrieve: function,
+        ...
       },
       stories: {
+        list: function,
         retrieve: function,
-        create: function
+        ...
       }
     }
   */
   buildServices() {
     return Object.keys(this.config.resources).reduce((resourceMemo, resource) => {
-      const operations = this.config.resources[resource];
-      resourceMemo[resource] = operations.reduce((operationMemo, operation) => {
+      // const resourceConfig = this.config.resources[resource];
+      resourceMemo[resource] = OPERATIONS.reduce((operationMemo, operation) => {
         operationMemo[operation] = createService(resource, operation);
         return operationMemo;
       }, {});
@@ -42,23 +46,26 @@ class Api {
     }, {});
   }
 
+
   /*
     returns something like:
     {
       projects: {
         list: function,
-        retrieve: function
+        retrieve: function,
+        ...
       },
       stories: {
+        list: function,
         retrieve: function,
-        create: function
+        ...
       }
     }
   */
   buildActions() {
     return Object.keys(this.config.resources).reduce((resourceMemo, resource) => {
-      const operations = this.config.resources[resource];
-      resourceMemo[resource] = operations.reduce((operationMemo, operation) => {
+      // const resourceConfig = this.config.resources[resource];
+      resourceMemo[resource] = OPERATIONS.reduce((operationMemo, operation) => {
         operationMemo[operation] = createAction(resource, operation, this.services);
         return operationMemo;
       }, {});
@@ -77,19 +84,19 @@ class Api {
   */
   buildReducers() {
     return Object.keys(this.config.resources).reduce((memo, resource) => {
-      const operations = this.config.resources[resource];
-      const listIndex = operations.indexOf('list');
+      // const resourceConfig = this.config.resources[resource];
+      const listIndex = OPERATIONS.indexOf('list');
       let itemOperations;
 
       if (listIndex !== 1) {
         // Remove 'list' from the operations
-        itemOperations = operations.filter((operation) => operation !== 'list');
+        itemOperations = OPERATIONS.filter((operation) => operation !== 'list');
         // Set up the list reducer
-        memo[resource] = createListReducer(resource, operations);
+        memo[resource] = createListReducer(resource, OPERATIONS);
       }
       if (itemOperations && itemOperations.length > 0) {
         // TODO: Change this from Item to singular
-        memo[`${resource}Item`] = createItemReducer(resource, operations);
+        memo[`${resource}Item`] = createItemReducer(resource, OPERATIONS);
       }
       return memo;
     }, {});
