@@ -28,7 +28,7 @@ describe('reducers/project', function() {
 
     beforeEach(function() {
       expectedProject = fixture.generateOne('project');
-      const previousState = Immutable.fromJS({
+      const previousState = Immutable.from({
         isActive: true
       });
       nextState = projectReducer(previousState, {
@@ -48,7 +48,7 @@ describe('reducers/project', function() {
     });
 
     it('sets the project data to the response', function() {
-      expect(nextState.data).to.equal(Immutable.fromJS(expectedProject));
+      expect(nextState.data).to.deep.equal(Immutable.from(expectedProject));
     });
   });
 });

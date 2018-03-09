@@ -6,8 +6,8 @@
     "lint:css": "stylelint 'src/css/**/*.css' || true",
     "lint:js": "eslint --format 'node_modules/eslint-friendly-formatter' --ext .js,.jsx ./src ./modules",
     "lint:dev": "npm run lint -- -w",
-    "pretest": "npm run lint:css && npm run lint:js",
     "test": "NODE_ENV=test mocha --compilers jsx:babel-register --opts 'app/javascript/support/mocha.opts'",
+    "posttest": "npm run lint",
     "test:dev": "npm test -- -w"
   },
   "dependencies": {
@@ -40,7 +40,6 @@
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "chai-enzyme": "^1.0.0-beta.0",
-    "chai-immutable": "^1.6.0",
     "cheerio": "^1.0.0-rc.2",
     "enzyme": "^3.1.0",
     "es6-promise": "^4.1.1",

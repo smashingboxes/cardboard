@@ -28,7 +28,7 @@ describe('reducers/story', function() {
 
     beforeEach(function() {
       expectedStory = fixture.generateOne('story');
-      const previousState = Immutable.fromJS({
+      const previousState = Immutable.from({
         isActive: true
       });
       nextState = storyReducer(previousState, {
@@ -48,7 +48,7 @@ describe('reducers/story', function() {
     });
 
     it('sets the story data to the response', function() {
-      expect(nextState.data).to.equal(Immutable.fromJS(expectedStory));
+      expect(nextState.data).to.deep.equal(Immutable.from(expectedStory));
     });
   });
 });
