@@ -6,15 +6,15 @@ const propTypes = {
   label: PropTypes.string
 };
 
-function Text({ input, label }) {
+function TextArea({ input, label }) {
   return (
     <div>
       <label htmlFor={input.name}>{label}</label>
-      <input type="text" id={input.name} {...input} />
+      <input type="radio" id={input.name} {...input} />
     </div>
   );
 }
 
-Text.propTypes = propTypes;
+TextArea.propTypes = propTypes;
 
-export default Text;
+export default TextArea;

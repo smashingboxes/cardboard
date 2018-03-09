@@ -6,15 +6,15 @@ const propTypes = {
   label: PropTypes.string
 };
 
-function Text({ input, label }) {
+function Checkbox({ input, label }) {
   return (
     <div>
       <label htmlFor={input.name}>{label}</label>
-      <input type="text" id={input.name} {...input} />
+      <input type="checkbox" id={input.name} {...input} />
     </div>
   );
 }
 
-Text.propTypes = propTypes;
+Checkbox.propTypes = propTypes;
 
-export default Text;
+export default Checkbox;
