@@ -3,8 +3,8 @@
  * ========================================================================== */
 
 /* 0_vendor - normalize, sanitize, web-fonts */
-/* @import "normalize.css";
-@import "sanitize.css"; */
+@import "normalize.css";
+@import "sanitize.css";
 
 /* 1_settings (no output) variables, mixins, @font-faces */
 @import "1_settings/variables";
@@ -18,7 +18,9 @@
 @import "2_elements/typography";
 
 /* 3_components (.c-[name] BEM class selectors) buttons, well, links, logo */
+@import "3_components/button";
 @import "3_components/card";
+@import "3_components/project";
 /* When in doubt, it goes here */
 
 /* 4_layout (.l-[name] BEM class selectors) header, footer, grid, sections */

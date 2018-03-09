@@ -1,0 +1,17 @@
+.c-button {
+  align-items: center;
+  background-color: var(--color-blue);
+  border: 1px solid var(--color-blue);
+  border-radius: var(--border-radius-default);
+  color: var(--color-white);
+  padding: var(--spacing-sm);
+  margin: var(--spacing-sm);
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-blue-xdark);
+    border-color: var(--color-blue-xdark);
+    color: var(--color-blue-xdark);
+    outline: none;
+  }
+}

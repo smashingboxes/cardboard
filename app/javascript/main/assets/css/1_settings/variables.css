@@ -3,7 +3,7 @@
   --background-color-dark: var(--color-dark-grey);
   --background-color-light: var(--color-light-grey);
   --border-default: 1px solid var(--theme-color-border);
-  --border-radius-default: 2px;
+  --border-radius-default: 5px;
   --box-shadow-default: 0 1px 1px rgba(0, 0, 0, 0.25);
   --box-shadow-inset: var(--box-shadow-default) inset;
   --box-shadow-elevated: 0 1px 3px rgba(0, 0, 0, 0.1),
@@ -45,7 +45,7 @@
   --spacing-sm: 0.5rem;
   --spacing-xs: 0.25rem;
   --text-shadow-default: 0 0 5px rgba(0, 0, 0, 0.5);
-  --theme-color-accent: var(--color-dark-grey);
+  --theme-color-accent: var(--color-blue);
   --theme-color-border: var(--color-dark-grey);
   --theme-color-input: var(--color-off-white);
   --theme-color-text: var(--color-med-grey);

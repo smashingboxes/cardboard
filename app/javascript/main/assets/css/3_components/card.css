@@ -5,7 +5,7 @@
 .c-card__titlebar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: var(--spacing-sm)
+  margin-bottom: var(--spacing-sm);
 }
 
 .c-card__slug {

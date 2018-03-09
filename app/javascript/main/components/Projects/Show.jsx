@@ -3,7 +3,10 @@ import React from 'react';
 import Board from 'react-trello';
 
 import COLUMNS from '../../constants/columns';
+import routes from '../../constants/routes';
 import Card from './Card';
+
+import { Link } from 'react-router-dom';
 
 const propTypes = {
   project: PropTypes.shape({
@@ -40,7 +43,14 @@ function ProjectShow({ project }) {
 
   return (
     <div>
-      <h1>{project.name}</h1>
+      <div className="c-project__header">
+        <div>
+          <h1>
+            <Link to={routes.PROJECTS.build()}>Projects</Link> / {project.name}
+          </h1>
+        </div>
+        <Link className="c-button" to={routes.STORY_NEW.build({ projectId: project.id })}>Create Story</Link>
+      </div>
       <Board
         customCardLayout
         data={boardData}

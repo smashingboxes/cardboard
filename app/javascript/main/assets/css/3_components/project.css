@@ -1,0 +1,9 @@
+.c-project__header {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--spacing-sm);
+
+  & h1 {
+    font-size: var(--font-size-xxl);
+  }
+}
