@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Board from 'react-trello';
 
 import COLUMNS from '../../constants/columns';
 import routes from '../../constants/routes';
 import Card from './Card';
 
-import { Link } from 'react-router-dom';
 
 const propTypes = {
   project: PropTypes.shape({
@@ -41,14 +41,14 @@ function ProjectShow({ project }) {
 
   const boardData = { lanes };
 
+  const projectsListLink = <Link to={routes.PROJECTS.build()}>Projects</Link>;
+
   return (
     <div>
       <div className="c-project__header">
-        <div>
-          <h1>
-            <Link to={routes.PROJECTS.build()}>Projects</Link> / {project.name}
-          </h1>
-        </div>
+        <span className="c-breadcrumb">
+          {projectsListLink} / {project.name}
+        </span>
         <Link className="c-button" to={routes.STORY_NEW.build({ projectId: project.id })}>Create Story</Link>
       </div>
       <Board
