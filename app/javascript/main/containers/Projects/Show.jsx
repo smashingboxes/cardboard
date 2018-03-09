@@ -43,8 +43,8 @@ ConnectedProjectShow.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {
-    project: state.getIn(['project', 'data']),
-    isLoading: !state.getIn(['project', 'isFetched'])
+    project: state.project.data,
+    isLoading: !state.project.isFetched
   };
 }
 

@@ -1,9 +1,8 @@
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  story: ImmutablePropTypes.contains({
+  story: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     summary: PropTypes.string.isRequired
   })
@@ -12,8 +11,8 @@ const propTypes = {
 function StoryShow({ story }) {
   return (
     <div>
-      <h1>Slug: {story.get('slug')}</h1>
-      <h1>Title: {story.get('summary')}</h1>
+      <h1>Slug: {story.slug}</h1>
+      <h1>Title: {story.summary}</h1>
     </div>
   );
 }

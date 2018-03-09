@@ -1,4 +1,4 @@
-import Immutable from 'immutable';
+import Immutable from 'seamless-immutable';
 import {
   applyMiddleware,
   createStore
@@ -11,7 +11,7 @@ import reducers from '../reducers';
 
 class Store {
   constructor() {
-    const initialState = new Immutable.Map();
+    const initialState = Immutable.from({});
     this.store = createStore(
       reducers,
       initialState,

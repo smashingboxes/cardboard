@@ -34,7 +34,7 @@ ConnectedProjectList.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {
-    projects: state.getIn(['projects', 'data'])
+    projects: state.projects.data
   };
 }
 

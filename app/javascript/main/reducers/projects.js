@@ -1,31 +1,31 @@
-import Immutable from 'immutable';
+import Immutable from 'seamless-immutable';
 import actionTypes from '../constants/actionTypes';
 
-const INITIAL_STATE = new Immutable.Map({
+const INITIAL_STATE = Immutable.from({
   isActive: false,
   isFetched: false,
-  data: new Immutable.List()
+  data: []
 });
 
 function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
   case actionTypes.GET_PROJECTS_START:
-    return state.withMutations((map) => {
-      map.delete('error');
-      map.set('isActive', true);
-    });
+    return state.merge({
+      isActive: true
+    }).without('error');
 
-  case actionTypes.GET_PROJECTS_SUCCESS:
-    return state.withMutations((map) => {
-      map.set('isActive', false);
-      map.set('isFetched', true);
-      map.set('data', Immutable.fromJS(action.payload.projects));
+  case actionTypes.GET_PROJECTS_SUCCESS: {
+    return state.merge({
+      isActive: false,
+      isFetched: true,
+      data: action.payload.projects
     });
+  }
 
   case actionTypes.GET_PROJECTS_FAILURE:
-    return state.withMutations((map) => {
-      map.set('error', action.payload.error);
-      map.set('isActive', false);
+    return state.merge({
+      error: action.payload.error,
+      isActive: false
     });
 
   default:

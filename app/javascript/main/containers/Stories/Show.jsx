@@ -43,8 +43,8 @@ ConnectedStoryShow.propTypes = propTypes;
 
 function mapStateToProps(state) {
   return {
-    story: state.getIn(['story', 'data']),
-    isLoading: !state.getIn(['story', 'isFetched'])
+    story: state.story.data,
+    isLoading: !state.story.isFetched
   };
 }
 

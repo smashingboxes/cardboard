@@ -1,6 +1,6 @@
 import {
   SubmissionError
-} from 'redux-form/immutable';
+} from 'redux-form';
 
 import apiService from './api';
 
@@ -9,7 +9,7 @@ const errorData = { _error: 'Submission error' };
 const storiesService = {
   createStory(values) {
     return apiService
-      .post('/stories', values.toJS())
+      .post('/stories', values)
       .then(({ data }) => data)
       .catch(() => {
         throw new SubmissionError(errorData);

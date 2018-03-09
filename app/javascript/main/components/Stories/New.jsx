@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Field
-} from 'redux-form/immutable';
+} from 'redux-form';
 
 
 const propTypes = {

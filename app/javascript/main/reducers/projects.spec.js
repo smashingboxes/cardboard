@@ -1,10 +1,10 @@
-import Immutable from 'immutable';
+import Immutable from 'seamless-immutable';
 import projectsReducer from './projects';
 
-const initialState = new Immutable.Map({
+const initialState = Immutable.from({
   isActive: false,
   isFetched: false,
-  data: new Immutable.Map()
+  data: {}
 });
 
 describe('reducers/projects', function() {
@@ -18,7 +18,7 @@ describe('reducers/projects', function() {
     });
 
     it('sets isActive to true', function() {
-      expect(nextState.get('isActive')).to.be.true;
+      expect(nextState.isActive).to.be.true;
     });
   });
 
@@ -40,15 +40,15 @@ describe('reducers/projects', function() {
     });
 
     it('sets isActive to false', function() {
-      expect(nextState.get('isActive')).to.be.false;
+      expect(nextState.isActive).to.be.false;
     });
 
     it('sets isFetched to true', function() {
-      expect(nextState.get('isFetched')).to.be.true;
+      expect(nextState.isFetched).to.be.true;
     });
 
     it('sets the projects data to the response', function() {
-      expect(nextState.get('data')).to.equal(Immutable.fromJS(expectedProjects));
+      expect(nextState.data).to.equal(Immutable.fromJS(expectedProjects));
     });
   });
 });

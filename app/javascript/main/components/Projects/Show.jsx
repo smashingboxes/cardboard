@@ -1,4 +1,3 @@
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Board from 'react-trello';
@@ -7,11 +6,11 @@ import COLUMNS from '../../constants/columns';
 import Card from './Card';
 
 const propTypes = {
-  project: ImmutablePropTypes.contains({
+  project: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    epics: ImmutablePropTypes.contains({
+    epics: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      stories: ImmutablePropTypes.contains({
+      stories: PropTypes.shape({
         name: PropTypes.string.isRequired
       })
     })
@@ -20,15 +19,15 @@ const propTypes = {
 
 function ProjectShow({ project }) {
   const lanes = COLUMNS.map((column) => {
-    const cards = project.get('stories')
-      .filter((story) => column.statuses.indexOf(story.get('status')) !== -1)
+    const cards = project.stories
+      .asMutable({ deep: true })
+      .filter((story) => column.statuses.indexOf(story.status) !== -1)
       .map((story) => {
         return {
-          id: story.get('id').toString(),
+          id: story.id.toString(),
           details: story
         };
-      })
-      .toJS();
+      });
     return {
       id: column.label,
       title: column.label,
@@ -41,7 +40,7 @@ function ProjectShow({ project }) {
 
   return (
     <div>
-      <h1>{project.get('name')}</h1>
+      <h1>{project.name}</h1>
       <Board
         customCardLayout
         data={boardData}

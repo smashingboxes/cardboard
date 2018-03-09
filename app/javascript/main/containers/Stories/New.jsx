@@ -12,7 +12,7 @@ import {
 import {
   reduxForm,
   getFormValues
-} from 'redux-form/immutable';
+} from 'redux-form';
 
 import * as projectActionCreators from '../../actions/projects';
 import storiesService from '../../services/stories';
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
   return {
     formValues: getFormValues(formName)(state),
     initialValues: {
-      projectId: state.getIn(['project', 'data', 'id'])
+      projectId: state.project.data.id
     }
   };
 }

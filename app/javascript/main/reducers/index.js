@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux-immutable';
-import { reducer as form } from 'redux-form/immutable';
+import { combineReducers } from 'redux';
+import { reducer as form } from 'redux-form';
 import project from './project';
 import projects from './projects';
 import story from './story';
