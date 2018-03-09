@@ -47,7 +47,7 @@
   --text-shadow-default: 0 0 5px rgba(0, 0, 0, 0.5);
   --theme-color-accent: var(--color-blue);
   --theme-color-border: var(--color-dark-grey);
-  --theme-color-input: var(--color-off-white);
+  --theme-color-input: var(--color-light-grey);
   --theme-color-text: var(--color-med-grey);
   --theme-color-text-muted: var(--color-light-grey);
   --transition-duration-default: 0.2s;
