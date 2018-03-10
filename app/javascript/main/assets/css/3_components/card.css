@@ -1,5 +1,6 @@
 .c-card {
   padding: var(--spacing-xs);
+  color: var(--theme-color-text);
 }
 
 .c-card__titlebar {

@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import STATUSES from '../../constants/statuses';
+import routes from '../../constants/routes';
 
 const propTypes = {
   details: PropTypes.shape({
@@ -23,7 +25,9 @@ function Card({ details }) {
   return (
     <div className={`c-card c-card--${details.status}`}>
       <div className="c-card__titlebar">
-        <div className="c-card__slug">{details.slug}</div>
+        <Link to={routes.STORY.build({ storyId: details.id })} className="c-card__slug">
+          {details.slug}
+        </Link>
         <div className="c-card__status">{statusText}</div>
         <div className={`c-card__estimate c-card__estimate--${estimateType}`}>
           {estimateValue}
