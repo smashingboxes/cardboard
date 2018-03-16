@@ -1,4 +1,4 @@
-import Api from './restfulApi';
+import Api from '../restfulApi';
 
 const api = new Api({
   resources: {

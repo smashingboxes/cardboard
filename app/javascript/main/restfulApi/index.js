@@ -1,6 +1,6 @@
 import createService from './createService';
 import createAction from './createAction';
-import { createListReducer, createItemReducer } from './createReducer';
+import { createListReducer, createItemReducer } from './reducerCreators';
 
 const OPERATIONS = ['list', 'retrieve', 'update', 'create', 'delete'];
 
