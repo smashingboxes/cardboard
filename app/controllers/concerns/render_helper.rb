@@ -2,6 +2,9 @@ module RenderHelper
   extend ActiveSupport::Concern
 
   def render_failure_json(status: nil, errors: [], message: "Failure.")
+    logger.error("### REQUEST FAILURE ###")
+    logger.error(message: message)
+    logger.error(errors: errors)
     render json: {
       meta: { success: false, message: message },
       errors: errors
@@ -13,8 +16,7 @@ module RenderHelper
       json: data,
       meta: { success: true, message: message },
       status: 200,
-      serializer_key(data) => serializer,
-      include: "**"
+      serializer_key(data) => serializer
     }
     render render_params.compact
   end
@@ -23,7 +25,7 @@ module RenderHelper
     if outcome.valid?
       render_service_success_json(outcome, serializer: serializer, data: data)
     else
-      render_service_failure_json(outcome)
+      render_service_failure_json(outcome, full_messages: outcome&.errors&.messages)
     end
   end
 
@@ -33,12 +35,12 @@ module RenderHelper
     render_success_json(data: data, message: message, serializer: serializer)
   end
 
-  def render_service_failure_json(outcome)
+  def render_service_failure_json(outcome, full_messages: nil)
     errors = outcome.errors
     message = outcome.failure_message
     render_failure_json(
       status: outcome.failure_status || 422,
-      errors: errors,
+      errors: errors.as_json.merge(full_messages: humanize_errors_hash(full_messages)),
       message: message
     )
   end
@@ -66,5 +68,11 @@ module RenderHelper
 
   def serializer_key(data)
     data.is_a?(ActiveRecord::Base) ? :serializer : :each_serializer
+  end
+
+  def humanize_errors_hash(full_messages)
+    full_messages&.map do |error_key, message_array|
+      message_array.flatten.map { |message| "#{error_key.to_s.humanize} #{message}" }
+    end.flatten
   end
 end

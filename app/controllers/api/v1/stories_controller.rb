@@ -8,6 +8,11 @@ class Api::V1::StoriesController < Api::V1::ApiController
     render_success_json(data: story)
   end
 
+  def update
+    story.assign_attributes(story_params)
+    render_save(story)
+  end
+
   private
 
   def story
@@ -18,7 +23,8 @@ class Api::V1::StoriesController < Api::V1::ApiController
     params.permit(
       :slug,
       :summary,
-      :project_id
+      :project_id,
+      :status
     )
   end
 end
