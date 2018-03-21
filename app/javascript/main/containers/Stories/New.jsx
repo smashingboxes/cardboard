@@ -14,7 +14,6 @@ import {
 } from 'redux-form';
 
 import api from '../../utils/api';
-import storiesService from '../../services/stories';
 import StoryNew from '../../components/Stories/New';
 import routes from '../../constants/routes';
 
@@ -72,7 +71,7 @@ export default compose(
   reduxForm({
     form: formName,
     onSubmit: (values) => {
-      return storiesService.create(values);
+      return api.services.stories.create(values);
     },
     enableReinitialize: true,
     keepDirtyOnReinitialize: true,

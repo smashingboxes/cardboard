@@ -46,7 +46,6 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  console.log(api.bindResourceActions(dispatch));
   return {
     actions: api.bindResourceActions(dispatch)
   };
