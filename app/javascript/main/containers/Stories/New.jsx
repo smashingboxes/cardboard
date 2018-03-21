@@ -6,7 +6,6 @@ import {
   connect
 } from 'react-redux';
 import {
-  bindActionCreators,
   compose
 } from 'redux';
 import {
@@ -14,7 +13,7 @@ import {
   getFormValues
 } from 'redux-form';
 
-import * as projectActionCreators from '../../actions/projects';
+import api from '../../utils/api';
 import storiesService from '../../services/stories';
 import StoryNew from '../../components/Stories/New';
 import routes from '../../constants/routes';
@@ -22,7 +21,7 @@ import routes from '../../constants/routes';
 const propTypes = {
   actions: PropTypes.shape({
     projects: PropTypes.shape({
-      getProject: PropTypes.func.isRequired
+      show: PropTypes.func.isRequired
     }).isRequired
   }).isRequired,
   match: PropTypes.shape({
@@ -34,7 +33,7 @@ const propTypes = {
 
 class ConnectedStoryNew extends Component {
   componentDidMount() {
-    this.props.actions.projects.getProject(this.props.match.params.projectId);
+    this.props.actions.projects.show(this.props.match.params.projectId);
   }
 
   render() {
@@ -50,16 +49,14 @@ function mapStateToProps(state) {
   return {
     formValues: getFormValues(formName)(state),
     initialValues: {
-      projectId: state.project.data.id
+      projectId: state.projectsItem.data.id
     }
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {
-      projects: bindActionCreators(projectActionCreators, dispatch)
-    }
+    actions: api.bindResourceActions(dispatch)
   };
 }
 
@@ -75,7 +72,7 @@ export default compose(
   reduxForm({
     form: formName,
     onSubmit: (values) => {
-      return storiesService.create(values.toJS());
+      return storiesService.create(values);
     },
     enableReinitialize: true,
     keepDirtyOnReinitialize: true,

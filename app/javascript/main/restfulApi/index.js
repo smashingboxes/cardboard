@@ -1,8 +1,12 @@
+import {
+  bindActionCreators
+} from 'redux';
+
 import createService from './createService';
 import createAction from './createAction';
 import { createListReducer, createItemReducer } from './reducerCreators';
 
-const OPERATIONS = ['list', 'retrieve', 'update', 'create', 'delete'];
+const OPERATIONS = ['list', 'show', 'update', 'create', 'delete'];
 
 class Api {
   /*
@@ -20,17 +24,25 @@ class Api {
     this.reducers = this.buildReducers();
   }
 
+  bindResourceActions(dispatch) {
+    return Object.keys(this.actions).reduce((memo, resource) => {
+      const actions = this.actions[resource];
+      memo[resource] = bindActionCreators(actions, dispatch);
+      return memo;
+    }, {});
+  }
+
   /*
     returns something like:
     {
       projects: {
         list: function,
-        retrieve: function,
+        show: function,
         ...
       },
       stories: {
         list: function,
-        retrieve: function,
+        show: function,
         ...
       }
     }
@@ -46,18 +58,17 @@ class Api {
     }, {});
   }
 
-
   /*
     returns something like:
     {
       projects: {
         list: function,
-        retrieve: function,
+        show: function,
         ...
       },
       stories: {
         list: function,
-        retrieve: function,
+        show: function,
         ...
       }
     }

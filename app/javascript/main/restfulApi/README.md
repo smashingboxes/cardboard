@@ -28,13 +28,24 @@ export default combineReducers({
 
 ```
 
-Then in your components, you can make network requests like the following:
+Then in your components, you can use the `bindResourceActions` function to bind your actions like so:
+
+```js
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: api.bindResourceActions(dispatch)
+  };
+}
+connect(mapStateToProps, mapDispatchToProps)
+```
+
+And call the actions to make network requests like the following:
 
 ```js
 // GET /api/v1/projects
 api.actions.projects.list();
 // GET /api/v1/projects/1
-api.actions.projects.retrieve({ id: 1 });
+api.actions.projects.show({ id: 1 });
 // POST /api/v1/projects
 api.actions.projects.create(body);
 // PUT /api/v1/projects/1
