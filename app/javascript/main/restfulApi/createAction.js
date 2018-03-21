@@ -20,7 +20,7 @@ function createAction(resource, operation, services) {
         // TODO: Handle failures
       };
     };
-  case 'retrieve':
+  case 'show':
     return (id) => {
       return (dispatch) => {
         dispatch({ type: `${actionPrefix}_START` });

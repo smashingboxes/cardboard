@@ -10,7 +10,7 @@ function createService(resource, operation) {
         .get(`/${resource}`)
         .then(({ data }) => data);
     };
-  case 'retrieve':
+  case 'show':
     return (id) => {
       return apiService
         .get(`/${resource}/${id}`)

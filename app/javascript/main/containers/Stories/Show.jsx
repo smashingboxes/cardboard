@@ -5,17 +5,14 @@ import React, {
 import {
   connect
 } from 'react-redux';
-import {
-  bindActionCreators
-} from 'redux';
 
-import * as storiesActionCreators from '../../actions/stories';
+import api from '../../utils/api';
 import StoryShow from '../../components/Stories/Show';
 
 const propTypes = {
   actions: PropTypes.shape({
     stories: PropTypes.shape({
-      getStory: PropTypes.func.isRequired
+      show: PropTypes.func.isRequired
     }).isRequired
   }).isRequired,
   match: PropTypes.shape({
@@ -28,7 +25,7 @@ const propTypes = {
 
 class ConnectedStoryShow extends Component {
   componentDidMount() {
-    this.props.actions.stories.getStory(this.props.match.params.storyId);
+    this.props.actions.stories.show(this.props.match.params.storyId);
   }
 
   render() {
@@ -50,9 +47,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {
-      stories: bindActionCreators(storiesActionCreators, dispatch)
-    }
+    actions: api.bindResourceActions(dispatch)
   };
 }
 

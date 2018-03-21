@@ -5,24 +5,21 @@ import React, {
 import {
   connect
 } from 'react-redux';
-import {
-  bindActionCreators
-} from 'redux';
 
-import * as projectActionCreators from '../../actions/projects';
+import api from '../../utils/api';
 import ProjectList from '../../components/Projects/List';
 
 const propTypes = {
   actions: PropTypes.shape({
     projects: PropTypes.shape({
-      getProjects: PropTypes.func.isRequired
+      list: PropTypes.func.isRequired
     }).isRequired
   }).isRequired
 };
 
 class ConnectedProjectList extends Component {
   componentDidMount() {
-    this.props.actions.projects.getProjects();
+    this.props.actions.projects.list();
   }
 
   render() {
@@ -40,9 +37,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {
-      projects: bindActionCreators(projectActionCreators, dispatch)
-    }
+    actions: api.bindResourceActions(dispatch)
   };
 }
 

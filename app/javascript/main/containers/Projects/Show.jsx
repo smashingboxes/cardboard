@@ -5,17 +5,14 @@ import React, {
 import {
   connect
 } from 'react-redux';
-import {
-  bindActionCreators
-} from 'redux';
 
-import * as projectActionCreators from '../../actions/projects';
+import api from '../../utils/api';
 import ProjectShow from '../../components/Projects/Show';
 
 const propTypes = {
   actions: PropTypes.shape({
     projects: PropTypes.shape({
-      getProject: PropTypes.func.isRequired
+      show: PropTypes.func.isRequired
     }).isRequired
   }).isRequired,
   match: PropTypes.shape({
@@ -28,7 +25,7 @@ const propTypes = {
 
 class ConnectedProjectShow extends Component {
   componentDidMount() {
-    this.props.actions.projects.getProject(this.props.match.params.projectId);
+    this.props.actions.projects.show(this.props.match.params.projectId);
   }
 
   render() {
@@ -49,10 +46,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+  console.log(api.bindResourceActions(dispatch));
   return {
-    actions: {
-      projects: bindActionCreators(projectActionCreators, dispatch)
-    }
+    actions: api.bindResourceActions(dispatch)
   };
 }
 
