@@ -1,7 +1,7 @@
 export default [
-  { label: 'To Do', statuses: ['todo'] },
-  { label: 'In Progress', statuses: ['in_progress', 'qa_rejected'] },
-  { label: 'Code Review', statuses: ['code_review', 'merged'] },
-  { label: 'QA', statuses: ['qa'] },
-  { label: 'Done', statuses: ['done'] }
+  { id: 'todo', label: 'To Do', statuses: ['todo'] },
+  { id: 'in_progress', label: 'In Progress', statuses: ['in_progress', 'qa_rejected'] },
+  { id: 'code_review', label: 'Code Review', statuses: ['code_review', 'merged'] },
+  { id: 'qa', label: 'QA', statuses: ['qa'] },
+  { id: 'done', label: 'Done', statuses: ['done'] }
 ];

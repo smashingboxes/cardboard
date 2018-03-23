@@ -9,9 +9,9 @@
 
   &:hover,
   &:focus {
-    background-color: var(--color-blue-xdark);
-    border-color: var(--color-blue-xdark);
-    color: var(--color-blue-xdark);
+    background-color: var(--color-blue-dark);
+    border-color: var(--color-blue-dark);
+    color: var(--color-white);
     outline: none;
   }
 }

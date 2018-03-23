@@ -43,7 +43,6 @@ function createItemReducer(resource, resourceConfig) {
 
     default: {
       if (customReducer) {
-        console.log('meh2', customReducer, action);
         return customReducer(state, action);
       }
       return state;

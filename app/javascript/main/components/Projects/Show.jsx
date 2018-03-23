@@ -17,10 +17,15 @@ const propTypes = {
         name: PropTypes.string.isRequired
       })
     })
-  })
+  }),
+  actions: PropTypes.shape({
+    stories: PropTypes.shape({
+      update: PropTypes.func.isRequired
+    }).isRequired
+  }).isRequired
 };
 
-function ProjectShow({ project }) {
+function ProjectShow({ project, actions }) {
   const lanes = COLUMNS.map((column) => {
     const cards = project.stories
       .asMutable({ deep: true })
@@ -32,7 +37,7 @@ function ProjectShow({ project }) {
         };
       });
     return {
-      id: column.label,
+      id: column.id,
       title: column.label,
       label: cards.length.toString(),
       cards
@@ -40,6 +45,11 @@ function ProjectShow({ project }) {
   });
 
   const boardData = { lanes };
+  function handleDragEnd(cardId, _, targetLaneId) {
+    actions.stories.update(cardId, {
+      status: targetLaneId
+    });
+  }
 
   const projectsListLink = <Link to={routes.PROJECTS.build()}>Projects</Link>;
 
@@ -55,6 +65,7 @@ function ProjectShow({ project }) {
         customCardLayout
         data={boardData}
         draggable
+        handleDragEnd={handleDragEnd}
       >
         <Card />
       </Board>;
