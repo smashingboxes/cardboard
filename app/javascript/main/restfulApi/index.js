@@ -95,7 +95,7 @@ class Api {
   */
   buildReducers() {
     return Object.keys(this.config.resources).reduce((memo, resource) => {
-      // const resourceConfig = this.config.resources[resource];
+      const resourceConfig = this.config.resources[resource];
       const listIndex = OPERATIONS.indexOf('list');
       let itemOperations;
 
@@ -103,11 +103,11 @@ class Api {
         // Remove 'list' from the operations
         itemOperations = OPERATIONS.filter((operation) => operation !== 'list');
         // Set up the list reducer
-        memo[resource] = createListReducer(resource, OPERATIONS);
+        memo[resource] = createListReducer(resource, resourceConfig, OPERATIONS);
       }
       if (itemOperations && itemOperations.length > 0) {
         // TODO: Change this from Item to singular
-        memo[`${resource}Item`] = createItemReducer(resource, OPERATIONS);
+        memo[`${resource}Item`] = createItemReducer(resource, resourceConfig, OPERATIONS);
       }
       return memo;
     }, {});

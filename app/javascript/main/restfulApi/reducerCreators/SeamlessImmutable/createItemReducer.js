@@ -1,6 +1,7 @@
 import Immutable from 'seamless-immutable';
 
-function createItemReducer(resource) {
+function createItemReducer(resource, resourceConfig) {
+  const customReducer = resourceConfig.itemReducer;
   // eg PROJECTS
   const actionPrefix = resource.toUpperCase();
 
@@ -40,8 +41,13 @@ function createItemReducer(resource) {
         isActive: false
       });
 
-    default:
+    default: {
+      if (customReducer) {
+        console.log('meh2', customReducer, action);
+        return customReducer(state, action);
+      }
       return state;
+    }
     }
   };
 }
