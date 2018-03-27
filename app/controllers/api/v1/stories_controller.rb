@@ -24,7 +24,8 @@ class Api::V1::StoriesController < Api::V1::ApiController
       :slug,
       :summary,
       :project_id,
-      :status
+      :status,
+      :description
     )
   end
 end

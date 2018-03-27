@@ -2,13 +2,14 @@
 #
 # Table name: stories
 #
-#  created_at :datetime         not null
-#  id         :integer          not null, primary key
-#  project_id :integer
-#  slug       :string
-#  status     :string
-#  summary    :text
-#  updated_at :datetime         not null
+#  created_at  :datetime         not null
+#  description :text
+#  id          :integer          not null, primary key
+#  project_id  :integer
+#  slug        :string
+#  status      :string
+#  summary     :text
+#  updated_at  :datetime         not null
 #
 
 class Story < ApplicationRecord

@@ -23,6 +23,7 @@ describe "POST /api/v1/stories", as: :request do
       subject
       expect(created_story.slug).to eq(params[:slug])
       expect(created_story.summary).to eq(params[:summary])
+      expect(created_story.description).to eq(params[:description])
       expect(created_story.project.id).to eq(params[:project_id])
     end
   end
