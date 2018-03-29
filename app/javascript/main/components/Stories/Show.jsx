@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import routes from '../../constants/routes';
+import Breadcrumb from '../Breadcrumb';
 
 const propTypes = {
   story: PropTypes.shape({
@@ -12,14 +13,14 @@ const propTypes = {
 };
 
 function StoryShow({ story }) {
-  const projectsListLink = <Link to={routes.PROJECTS.build()}>Projects</Link>;
-  const projectLink = <Link to={routes.PROJECT.build({ projectId: story.project.id })}>{story.project.name}</Link>;
   return (
     <div className="c-story">
       <div className="c-story__header">
-        <span className="c-breadcrumb">
-          {projectsListLink} / {projectLink} / {story.slug}
-        </span>
+        <Breadcrumb>
+          <Link to={routes.PROJECTS.build()}>Projects</Link>
+          <Link to={routes.PROJECT.build({ projectId: story.project.id })}>{story.project.name}</Link>
+          {story.slug}
+        </Breadcrumb>
       </div>
       <span className="c-story__summary">{story.summary}</span>
     </div>

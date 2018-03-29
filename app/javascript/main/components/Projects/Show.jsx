@@ -6,7 +6,7 @@ import Board from 'react-trello';
 import COLUMNS from '../../constants/columns';
 import routes from '../../constants/routes';
 import Card from './Card';
-
+import Breadcrumb from '../Breadcrumb';
 
 const propTypes = {
   project: PropTypes.shape({
@@ -51,14 +51,14 @@ function ProjectShow({ project, actions }) {
     });
   }
 
-  const projectsListLink = <Link to={routes.PROJECTS.build()}>Projects</Link>;
 
   return (
     <div>
       <div className="c-project__header">
-        <span className="c-breadcrumb">
-          {projectsListLink} / {project.name}
-        </span>
+        <Breadcrumb>
+          <Link to={routes.PROJECTS.build()}>Projects</Link>
+          {project.name}
+        </Breadcrumb>
         <Link className="c-button" to={routes.STORY_NEW.build({ projectId: project.id })}>Create Story</Link>
       </div>
       <Board
