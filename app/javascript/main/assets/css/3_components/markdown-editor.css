@@ -1,0 +1,20 @@
+.c-markdown-editor {
+  display: grid;
+  grid-template-areas:
+    "label ."
+    "editor preview";
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+}
+.c-markdown-editor__label {
+  grid-area: label;
+}
+.c-markdown-editor__input {
+  grid-area: editor;
+  vertical-align: top;
+}
+.c-markdown-editor__preview {
+  grid-area: preview;
+  vertical-align: top;
+  word-wrap: break-word;
+}

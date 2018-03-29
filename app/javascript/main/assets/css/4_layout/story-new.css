@@ -1,0 +1,32 @@
+.l-story-new {
+  margin: var(--spacing-sm);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* grid-template-rows: 1fr 1fr 1fr 1fr; */
+  grid-template-areas:
+    "slug slug slug slug"
+    "summary summary summary summary"
+    "description description description description"
+    "description description description description";
+  grid-row-gap: 10px;
+}
+
+.l-story-new__slug {
+  grid-area: slug;
+}
+
+.l-story-new__summary {
+  grid-area: summary;
+
+  & input {
+    width: 80%;
+  }
+}
+
+.l-story-new__description {
+  grid-area: description;
+
+  & textarea {
+    height: 200px;
+  }
+}

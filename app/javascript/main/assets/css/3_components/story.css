@@ -1,6 +1,4 @@
 .c-story__header {
-
-
   & .c-story__title {
     font-size: var(--font-size-xxl);
   }

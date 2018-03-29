@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
+  className: PropTypes.string,
   input: PropTypes.object,
   label: PropTypes.string,
   options: PropTypes.arrayOf(
@@ -12,9 +13,9 @@ const propTypes = {
   ).isRequired
 };
 
-function TextArea({ input, label, options }) {
+function TextArea({ className, input, label, options }) {
   return (
-    <div>
+    <div className={`c-formfield ${className}`}>
       <label htmlFor={input.name}>{label}</label>
       <select id={input.name} {...input}>
         {
