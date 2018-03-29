@@ -6,7 +6,6 @@
   grid-template-areas:
     "slug slug slug slug"
     "summary summary summary summary"
-    "description description description description"
     "description description description description";
   grid-row-gap: 10px;
 }

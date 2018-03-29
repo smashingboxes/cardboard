@@ -27,7 +27,8 @@ const propTypes = {
     params: PropTypes.shape({
       projectId: PropTypes.string.isRequired
     })
-  })
+  }),
+  isLoading: PropTypes.bool.isRequired
 };
 
 class ConnectedStoryNew extends Component {
@@ -36,6 +37,9 @@ class ConnectedStoryNew extends Component {
   }
 
   render() {
+    if (this.props.isLoading) {
+      return <div>Loading...</div>;
+    }
     return <StoryNew {...this.props} />;
   }
 }
@@ -49,7 +53,9 @@ function mapStateToProps(state) {
     formValues: getFormValues(formName)(state),
     initialValues: {
       projectId: state.projectsItem.data.id
-    }
+    },
+    project: state.projectsItem.data,
+    isLoading: !state.projectsItem.isFetched
   };
 }
 
