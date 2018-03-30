@@ -32,6 +32,7 @@ group :development, :test do
   gem "pry-byebug"
   gem "rspec-rails"
   gem "rubocop"
+  gem "rubocop-rspec"
   gem "shoulda-matchers"
   gem "simplecov"
 end

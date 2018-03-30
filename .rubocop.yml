@@ -1,3 +1,4 @@
+require: rubocop-rspec
 AllCops:
   TargetRubyVersion: 2.3
   Exclude:
@@ -294,3 +295,5 @@ Rails/UnknownEnv:
     - staging
     - development
     - test
+RSpec/MultipleExpectations:
+  Max: 5
