@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
 
 import routes from '../../constants/routes';
 import Breadcrumb from '../Breadcrumb';
@@ -23,6 +24,11 @@ function StoryShow({ story }) {
         </Breadcrumb>
       </div>
       <span className="c-story__summary">{story.summary}</span>
+
+      <ReactMarkdown
+        className="markdown-body c-story__description"
+        source={story.description}
+      />
     </div>
   );
 }
